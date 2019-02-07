@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="watch()">
+        <input type="text" id="vtitle" placeholder="title">
+        <input type=text id="uploader" placeholder="uploader">
+        <input type="number" id="vnum" placeholder="second">
+        <button type="submit" value="watch" onclick="watch(event)">Watch </button>
+
+
+        <div id="message"></div>
+    </form>
+    <script>
+        function watch(e){
+            e.preventDefault();
+            console.log(e)
+           var massage = document.getElementById("message");
+           var seconds = document.getElementById("vnum").value;
+           var title = document.getElementById("vtitle").value;
+            massage.innerHTML=`<h1>You watched all ${seconds} of ${title}</h1>`
+
+        }
+    </script>
+</body>
+</html>
