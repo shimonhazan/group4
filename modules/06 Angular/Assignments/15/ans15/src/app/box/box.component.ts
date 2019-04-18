@@ -1,6 +1,6 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input ,Output} from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import { Output } from '@angular/core';
+import {ActivatedRoute} from '@angular/router'
 
 @Component({
   selector: 'app-box',
@@ -9,19 +9,20 @@ import { Output } from '@angular/core';
 })
 export class BoxComponent{
   @Input() src:string;
-  @Output() showBigPicture = new EventEmitter<string>();
+  @Input() author:string;
+  @Output() showOnBigPicture = new EventEmitter<string>();
   likeAmount:number;
   clicked:boolean;
-  constructor() {
+  activatedRoute:ActivatedRoute;
+  constructor(activatedRoute:ActivatedRoute) {
     this.likeAmount=0;
     this.clicked=false;
+    this.activatedRoute=activatedRoute;
   }
   addlike(){
     this.likeAmount++;
   }
   imgClicked(){
-    this.showBigPicture.emit(this.src)
-    //console.log(this.src)
-    this.clicked=true;
+    this.showOnBigPicture.emit(this.src);
   }
 }
